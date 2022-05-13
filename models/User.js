@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         require: true,
-        min: 8,
+        min: 4,
         max: 20,
 
     },
@@ -45,5 +45,9 @@ const UserSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false, 
-    }
-})
+    },
+},
+{timestamps: true}
+);
+
+module.exports = mongoose.model("User", UserSchema)
