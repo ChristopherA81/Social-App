@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { rawListeners } = require("../models/Post");
 const Post = require("../models/Post");
 // const User = require("../models/User");
 
@@ -18,7 +19,24 @@ router.post("/", async (req, res) => {
 
 // update a post
 
-router.put("/")
+router.put("/:id", async (req, res) => {
+    try {
+        const post = await Post.findById(req.body.params.id);
+        if(post.userId === req.body.userId) {
+            await post.updateOne({$set:req.body});
+            res.status(200).json("post has been updated")
+
+    } else {
+        res.status(403).json("You can update only your post")
+        
+    }
+}catch(err) {
+    res.status(500).json(err)
+}
+
+
+
+})
 
 // delete a post
 
