@@ -1,12 +1,18 @@
 import "./topbar.css"
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Link } from "react-router-dom";
 
 export default function Topbar() {
+
+  
   return (
     <div className="topbarContainer">
         <div className="topbarLeft">
+          <Link to="/" style={{textDecoration:"none"}}>
           <span className="logo">Chris App</span>
+          </Link>
+          
         </div>
         <div className="topbarCenter">
           <div className="searchbar">
@@ -25,7 +31,7 @@ export default function Topbar() {
           <div className="topbarIconItem">
             <AccountCircleIcon/></div>
         </div>
-        <img className="topbarImg" src="/assets/IMG_1148.jpg" alt="" />
+        <img className="topbarImg" src="./assets/post.JPG"alt="" />
       
     </div>
   )
